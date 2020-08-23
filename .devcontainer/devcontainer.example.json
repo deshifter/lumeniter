@@ -1,0 +1,13 @@
+{
+  "name": "Lumeniter",
+  "dockerComposeFile": "../docker-compose.yml",
+  "remoteUser": "lumen",
+  "runServices": [
+    "lumen",
+    "web"
+  ],
+  "service": "app",
+  "workspaceFolder": "/var/www",
+  "shutdownAction": "stopCompose",
+  "postCreateCommand": "uname -a"
+}

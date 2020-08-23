@@ -1,0 +1,34 @@
+language: bash
+sudo: required
+services:
+  - docker
+
+env:
+  matrix:
+    - PHP_VERSION=7.3 BUILD_SERVICE=app
+    - PHP_VERSION=7.4 BUILD_SERVICE=app
+
+    - PHP_VERSION=NA BUILD_SERVICE="nginx db"
+
+# Installing a newer Docker version
+before_install:
+  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+  - sudo apt-get update
+  - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce
+  - docker --version
+
+script: ./travis-build.sh
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  local_dir: docs
+  github_token: $GITHUB_TOKEN
+  on:
+    branch: master
+    condition: -n "${HUGO_VERSION}"
+
+notifications:
+  email: false
+  webhooks: https://outlook.office.com/webhook/412d8b59-eb3f-46c3-b19b-3379ff4afbff@64811792-9fe4-4c75-aaa5-51d46a8e138d/TravisCI/92cf91ed98764aeebedf43783694ff51/aa538873-4971-440f-b1dc-f1ae79de641e
