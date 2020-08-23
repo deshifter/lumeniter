@@ -4,9 +4,9 @@ APP_LUMEN_DIR=../
 
 APP_WEB_DIR=/var/www
 
-APP_HOST_DATA_DIR=~/.deshifter/nemul
+APP_HOST_DATA_DIR=~/.deshifter/lumen
 
-APP_PROJECT_NAME=Nemul
+APP_PROJECT_NAME=Lumen
 
 APP_HOST_IP=10.20.30.25
 
