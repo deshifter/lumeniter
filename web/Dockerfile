@@ -16,7 +16,7 @@ RUN addgroup -g 82 -S www-data ; \
 RUN touch /var/log/messages
 
 # Copy 'logrotate' config file
-COPY logrotate/web /etc/logrotate.d/
+COPY logrotate /etc/logrotate.d/web
 
 # Set upstream conf and remove the default conf
 RUN echo "upstream php-upstream { server php-fpm:9000; }" > /etc/nginx/conf.d/upstream.conf \
